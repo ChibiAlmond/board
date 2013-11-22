@@ -1,4 +1,5 @@
 <?php
+
 class ThreadController extends AppController
 {
     public function index()
