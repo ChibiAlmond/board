@@ -7,6 +7,8 @@ require_once APP_DIR.'app_exception.php';
 
 // helpers
 require_once HELPERS_DIR.'html_helper.php';
+require_once CONFIG_DIR.'router.php';
+require_once CONFIG_DIR.'database.php';
 
 // config
 require_once CONFIG_DIR.'log.php';
