@@ -10,7 +10,23 @@
 class Log
 {
     public static $uid;
-
+	// Log::debug method is used
+    // when dumping variables during the development process.
+    // This log is outputted as debug.log
+    // During production environment implementation, nothing occurs here.
+    //Log::debug($item);
+    // Log::info method is used
+    // when you want to record some kind of information for the developers.
+    // This log is outputted as info.log
+    //Log::info("API exec time = {$sec}");
+    // when an event occurs that the developers need to know about right away.
+    // This log is outputted as warn.log
+    //try {
+      //  PurchaseService::purchase($player, $item);
+    //} catch (UnexpectedException $e) {
+     //   Log::warn("PURCHASE API FAILED!!");
+   // }
+// Log::warn method is used
     /**
      * ログメッセージを debug.log ファイルに出力する
      *
