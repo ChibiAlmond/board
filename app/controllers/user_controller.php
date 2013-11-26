@@ -41,6 +41,7 @@ class UserController extends AppController
 	
     public function register()
     {
+
         $user = new User;
         $page = Param::get('page_next', 'register');
 
@@ -48,6 +49,7 @@ class UserController extends AppController
         case 'register':
             break;
         case 'register_end':
+			var_dump($_POST);
             $user->username = Param::get('username');
             $user->password = Param::get('password');
 			try {
