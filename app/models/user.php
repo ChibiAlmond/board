@@ -49,18 +49,16 @@ class User extends AppModel
 	
 	public function isPasswordSame() 	
 	{
-	    echo strcmp($this->password1,$this->password2);
 		return strcmp($this->password1,$this->password2);
 	}
 	
 	public function register()
 	{	
-		$pas
+		$user->password2 = Param::get('password2');
 	
-		if(!$this->isPasswordSame())
-		{
+		if(!$this->validate() || $this->isUserExisting() || $this->isPasswordSame())
 		throw new ValidationException('Invalid registration information');
-		}
+		
 	    $db = DB::conn();
 		$pass = md5($this->password);
         $db->query(
