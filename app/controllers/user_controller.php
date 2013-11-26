@@ -41,8 +41,8 @@ class UserController extends AppController
 	
     public function register()
     {
-
         $user = new User;
+		$user->password2 = Param::get('password2');
         $page = Param::get('page_next', 'register');
 
 		switch ($page) {

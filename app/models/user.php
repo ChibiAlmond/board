@@ -16,11 +16,6 @@ class User extends AppModel
 			    'validate_between', 8, 15,
 				),
 			),
-		'password2' => array(
-		    'length' => array(
-			    'validate_between', 8, 15,
-				),
-			),
 		);
 
 
@@ -54,8 +49,6 @@ class User extends AppModel
 	
 	public function register()
 	{	
-		$user->password2 = Param::get('password2');
-	
 		if(!$this->validate() || $this->isUserExisting() || $this->isPasswordSame())
 		throw new ValidationException('Invalid registration information');
 		
@@ -66,7 +59,7 @@ class User extends AppModel
 		    array( $this->username, $pass)
 			);
     }
-
+ 
 
 }
 
