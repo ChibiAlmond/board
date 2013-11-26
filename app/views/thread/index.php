@@ -1,3 +1,6 @@
+<?php if(isset($_SESSION['username'])) : ?>
+    <a class="btn btn-primary" href="<?php eh(url('user/logout')) ?>">Logout</a>
+<?php endif ?>
 <h1>All threads</h1>
 <ul>
     <?php foreach ($threads as $v): ?>
