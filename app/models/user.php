@@ -60,8 +60,6 @@ class User extends AppModel
 	
 	public function isPasswordSame() 	
 	{
-		echo $this->password1;
-		echo $this->password2;
 	    return strcmp($this->password1,$this->password2)? true : false;
 	}
 
