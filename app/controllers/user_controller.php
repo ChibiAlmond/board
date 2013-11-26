@@ -1,12 +1,6 @@
 <?php
 class UserController extends AppController
-{
-	public function index()
-    {
-        $users = User::getAll();
-        $this->set(get_defined_vars());
-    }
-	
+{	
 	public function login()
 	{
 		$user = new User;
