@@ -43,7 +43,6 @@ class UserController extends AppController
         case 'register':
             break;
         case 'register_end':
-			var_dump($_POST);
             $user->username = Param::get('username');
             $user->password = Param::get('password');
 			try {
