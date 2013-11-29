@@ -1,20 +1,14 @@
 <?php if (isset($_POST) && $user->hasError()) : ?>
     <div class="alert alert-block">
-    <h4 class="alert-heading">Validation error!</h4>
-    <?php if (!empty($user->validation_errors['username']['length'])): ?>
-        <div><em>Username length</em> must be between
-            <?php eh($user->validation['username']['length'][1]) ?> and
-            <?php eh($user->validation['username']['length'][2]) ?> characters in length.
-        </div>
-    <?php endif ?>
-    <?php if ($user->isUserExisting() === false): ?>
-        <div><em>Username Already Exist</em>  
-        </div>
-    <?php endif ?>
-    <?php if ($user->isPasswordSame() === false ): ?>
+        <h4 class="alert-heading">Validation error!</h4>
+        <?php if ($user->isUserExisting() === false): ?>
+            <div><em>Username Already Exist</em>  
+            </div>
+        <?php endif ?>
+        <?php if ($user->isPasswordSame() === false ): ?>
         <div><em>Password Not Match</em>
         </div>
-    <?php endif ?>
+        <?php endif ?>
     </div>
 <?php endif ?>
 
