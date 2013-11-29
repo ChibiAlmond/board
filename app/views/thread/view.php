@@ -9,7 +9,7 @@
     </div></br>
 </div>
 <?php endforeach ?>
-page of 
+
 <hr>
     <form class="well" method="post" action="<?php eh(url('thread/write')) ?>">
     <label>Your name</label>
@@ -21,5 +21,5 @@ page of
     <input type="hidden" name="page_next" value="write_end">
     <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-	<a class="btn btn-primary" href="<?php eh(url('thread/index'))?>">Back to login</a>
+	<a class="btn btn-primary" href="<?php eh(url('thread/index'))?>">Back to Home</a>
 	

@@ -10,5 +10,9 @@
         </a>
     </li>
     <?php endforeach ?>
+	
 </ul>
+<div class="pager page-header">
+    <?php echo $pagination_ctrl; ?>
+</div>
 <a class="btn btn-large btn-primary" href="<?php eh(url('thread/create')) ?>">Create</a>
