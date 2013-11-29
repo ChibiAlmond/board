@@ -35,6 +35,8 @@ class UserController extends AppController
 	
     public function register()
     {
+		$invalid_pass = false;
+		$user_exists = false;
         $user = new User;
 		$user->password2 = Param::get('password2');
         $page = Param::get('page_next', 'register');
@@ -45,12 +47,22 @@ class UserController extends AppController
         case 'register_end':
             $user->username = Param::get('username');
             $user->password = Param::get('password');
-			try {
-			    $user->register();
-				$_SESSION['username'] = Param::get('username');
-            } catch (ValidationException $e) {
-                $page = 'register';
-            }
+		
+				
+				if(!$user->isPasswordSame()) {
+					$invalid_pass = true;
+			        $page='register';
+				}
+				
+				if($user->isUserExisting()) {
+				    $user_exists = true;
+					$page='register';
+				}
+	
+				if($page != "register") {
+					 $user->register();
+					 $_SESSION['username'] = Param::get('username');
+				}
             break;
         default:
             throw new NotFoundException("{$page} is not found");

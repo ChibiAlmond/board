@@ -3,8 +3,14 @@ class ThreadController extends AppController
 {
 	public function index()
     {
-    $threads = Thread::getAll();
-    $this->set(get_defined_vars());
+    //$threads = Thread::getAll($page,1)
+	$array = Thread::getAll(Param::get('page',1));//set default value 1 in case null
+	$threads = $array['threads'];
+    $last_page = $array['last_page'];
+    $offset = $array['offset'];
+    $pagenum = $array['pagenum'];
+    $pagination_ctrl = pagination($last_page, $pagenum, 4);
+    $this->set(get_defined_vars()); 
     }
 	
     public function write()
@@ -60,13 +66,10 @@ class ThreadController extends AppController
         $this->set(get_defined_vars());
         $this->render($page);
     }
-
-
     public function view()
     {
         $thread = Thread::get(Param::get('thread_id'));
         $comments = $thread->getComments();
-	
         $this->set(get_defined_vars());
     }
 }
