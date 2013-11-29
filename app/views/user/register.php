@@ -20,12 +20,14 @@
 <?php endif ?>
 <h1>Register</h1>
 <form class="well" method="post" action="#">
-    <label>Username</label>
-    <input type="text" class="span3" name="username" value="<?php eh(Param::get('username')) ?>">
-    <label>Password</label>
-    <input type="password" class="span3" name="password" value="<?php eh(Param::get('password')) ?>">
+    <label>Username </label>
+	<label>Maximum length: 16</label>
+    <input type="text" class="span3" name="username" maxlength="16" value="<?php eh(Param::get('username')) ?>">
+    <label>Password </label>
+	<label>Maximum length: 12</label>
+    <input type="password" class="span3" name="password" maxlength="12" value="<?php eh(Param::get('password')) ?>">
     <label>Confirm Password</label>
-    <input type="password" class="span3" name="password2" value="<?php eh(Param::get('password2')) ?>">
+    <input type="password" class="span3" name="password2" maxlength="12" value="<?php eh(Param::get('password2')) ?>">
     <br />
     <input type="hidden" name="page_next" value="register_end">
     <button type="submit" class="btn btn-primary">Register</button>
