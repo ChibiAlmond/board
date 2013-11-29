@@ -1,17 +1,23 @@
-<?php if (isset($_POST) && $user->hasError()) : ?>
+<?php if ($user_exists || $invalid_pass) :?>
     <div class="alert alert-block">
-        <h4 class="alert-heading">Validation error!</h4>
-        <?php if ($user->isUserExisting() === false): ?>
-            <div><em>Username Already Exist</em>  
-            </div>
-        <?php endif ?>
-        <?php if ($user->isPasswordSame() === false ): ?>
-        <div><em>Password Not Match</em>
-        </div>
-        <?php endif ?>
+        <h4 class="alert-heading">Validation Errors!</h4>
+            <div>
+			    <em>
+				    <?php
+					if ($user_exists && $invalid_pass) { 
+					    echo "Username Already Exist and Password Not Match";
+					}
+					else{
+					    if ($user_exists)
+					        echo "Username Already Exist";
+					    else
+			                echo "Password Did Not Match";
+					}
+					?>
+				</em>  
+			</div>
     </div>
 <?php endif ?>
-
 <h1>Register</h1>
 <form class="well" method="post" action="#">
     <label>Username</label>

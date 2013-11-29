@@ -1,5 +1,3 @@
-<?php
-?>
 <h2>Access Granted</h2>
 <p class="alert alert-block">
    Successfully Logged In 
