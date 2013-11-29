@@ -11,7 +11,7 @@ class User extends AppModel
 			    'validate_between', 6, 15,
 			),
 		),
-		'password1' => array(
+		'password' => array(
 		    'length' => array(
 			    'validate_between', 8, 15,
 				),
@@ -22,14 +22,14 @@ class User extends AppModel
 	public function login()
 	{
 	    $db = DB::conn();
+		echo $pass = md5($this->password);
 		$row = $db->row(
 		    'SELECT 1 FROM user WHERE username = ? AND password = ?',
-			array(
-			    $this->username,
-				$this->password
+			array($this->username, $pass
 			)
 		);
-	    return $row ? true : false;
+	
+		return $row ? true : false;
 	}
 	public function isUserExisting()
 	{
@@ -39,23 +39,30 @@ class User extends AppModel
 			    array(
 		            $this->username
 			    ));
+		
 		return $row ? true : false; 
 	}
 	
 	public function isPasswordSame() 	
 	{
-		return strcmp($this->password1,$this->password2);
+		if($this->password === $this->password2) {
+		echo "pass same";
+		return true;
+		}
+		
+	return false;
 	}
 	
 	public function register()
 	{	
-		if(!$this->validate() || $this->isUserExisting() || $this->isPasswordSame())
-		throw new ValidationException('Invalid registration information');
+	    if(!$this->isPasswordSame() ){
+	        throw new ValidationException('Your Password is not same');
+	    }
 		
 	    $db = DB::conn();
 		$pass = md5($this->password);
         $db->query(
-		    'INSERT INTO user SET username =?, password =?',
+		    'INSERT INTO user SET username = ?, password = ?',
 		    array( $this->username, $pass)
 			);
     }
