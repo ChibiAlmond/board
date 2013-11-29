@@ -1,6 +1,7 @@
 <?php
 class Thread extends AppModel
 {
+	/*
     public $validation = array(
         'title' => array(
             'length' => array(
@@ -8,6 +9,7 @@ class Thread extends AppModel
             ),
         ),
     );
+	*/
 
 	public static function get($id)
     {
@@ -15,18 +17,30 @@ class Thread extends AppModel
         $row = $db->row('SELECT * FROM thread WHERE id = ?', array($id));
         return new self($row);
     }
-
-    public static function getAll()
-    {
+	
+   public static function getAll($page)
+    {	
         $threads = array();
-     
-    	$db = DB::conn();
-        $rows = $db->rows('SELECT * FROM thread');
+        $db = DB::conn();
+
+		$max_threads = 5;
+        $row_count = $db->value('SELECT COUNT(*) FROM thread');
+        $last_page = ceil($row_count/$max_threads);
+        $offset = ($page - 1) * $max_threads;
+
+        $rows = $db->rows('SELECT * FROM thread ORDER BY created DESC, id DESC
+                            LIMIT '.$max_threads. ' OFFSET '.$offset
+        );
         foreach ($rows as $row) {
             $threads[] = new Thread($row);
         }
-    
-	    return $threads;
+		 
+	    return array(
+            'threads' => $threads,
+            'last_page' => $last_page,
+            'offset' => $offset,
+            'pagenum' => $page
+        );
     }
 
 	public function getComments()
