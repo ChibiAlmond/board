@@ -1,16 +1,15 @@
 <h1><?php eh($thread->title) ?></h1>
-
 <?php foreach ($comments as $k => $v): ?>
 <div class="comment">
     <div class="meta">
-        <?php eh($k + 1) ?>: <?php eh($v->username) ?> <?php eh($v->created) ?>
-    </div>
-    <div>
-        <?php eh($v->body) ?>
-    </div>
+       Comment <?php eh($k + 1) ?> :
+		 <?php eh($v->body) ?></br>
+		By:<?php eh($v->username) ?></br>
+		On:<?php eh($v->created) ?></br>
+    </div></br>
 </div>
 <?php endforeach ?>
-
+page of 
 <hr>
     <form class="well" method="post" action="<?php eh(url('thread/write')) ?>">
     <label>Your name</label>
@@ -22,3 +21,5 @@
     <input type="hidden" name="page_next" value="write_end">
     <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+	<a class="btn btn-primary" href="<?php eh(url('thread/index'))?>">Back to login</a>
+	
