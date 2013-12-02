@@ -11,8 +11,12 @@
 <?php endforeach ?>
 
 <hr>
-    <form class="well" method="post" action="<?php eh(url('thread/write')) ?>">
-    <label>Your name</label>
+    <form class="well" method="post" action="<?php
+	//eh(url('thread/write')) 
+	eh(url('comment/write')) 
+	?>">
+    
+	<label>Your name</label>
     <input type="text" class="span2" name="username" value="<?php eh(Param::get('username')) ?>">
     <label>Comment</label>
     <textarea name="body"><?php eh(Param::get('body')) ?></textarea>
