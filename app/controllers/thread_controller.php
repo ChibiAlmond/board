@@ -3,8 +3,7 @@ class ThreadController extends AppController
 {
 	public function index()
     {
-    //$threads = Thread::getAll($page,1)
-	$array = Thread::getAll(Param::get('page',1));//set default value 1 in case null
+	$array = Thread::getAll(Param::get('page',1));
 	$threads = $array['threads'];
     $last_page = $array['last_page'];
     $offset = $array['offset'];
@@ -13,32 +12,6 @@ class ThreadController extends AppController
     $this->set(get_defined_vars()); 
     }
 	
-    public function write()
-    {
-        $thread = Thread::get(Param::get('thread_id'));
-        $comment = new Comment;
-        $page = Param::get('page_next', 'write');
-
-		switch ($page) {
-		case 'write':
-        break;
-        case 'write_end':
-            $comment->username = Param::get('username');
-            $comment->body = Param::get('body');
-			try {
-                $thread->write($comment);
-			} catch (ValidationErrorException $e) {
-			    $page = 'write';
-			}
-            break;
-        default:
-            throw new NotFoundException("{$page} is not found");
-            break;
-        }
-		
-        $this->set(get_defined_vars());
-        $this->render($page);
-    }
     public function create()
     {
         $thread = new Thread;
@@ -69,7 +42,7 @@ class ThreadController extends AppController
     public function view()
     {
         $thread = Thread::get(Param::get('thread_id'));
-        $comments = $thread->getComments();
+        //$comments = $thread->getComments();
         $this->set(get_defined_vars());
     }
 }
