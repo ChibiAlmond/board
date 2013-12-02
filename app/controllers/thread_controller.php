@@ -14,6 +14,7 @@ class ThreadController extends AppController
 	
     public function create()
     {
+	    
         $thread = new Thread;
         $comment = new Comment;
         $page = Param::get('page_next', 'create');

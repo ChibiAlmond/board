@@ -15,6 +15,7 @@ class CommentController extends Controller {
 	
 public function write()
     {
+		$thread = new Thread;
         $comment = new Comment;
         $page = Param::get('page_next', 'write');
 
