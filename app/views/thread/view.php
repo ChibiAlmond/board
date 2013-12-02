@@ -9,7 +9,10 @@
     </div></br>
 </div>
 <?php endforeach ?>
-
+<div class="pager page-header">
+    <?php //echo $pagination_ctrl;
+	?>
+</div>
 <hr>
     <form class="well" method="post" action="<?php eh(url('thread/write')) ?>">
     <label>Your name</label>
