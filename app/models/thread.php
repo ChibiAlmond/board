@@ -4,7 +4,8 @@ class Thread extends AppModel
 	public static function get($id)
     {
         $db = DB::conn();
-        $row = $db->row('SELECT * FROM thread WHERE id = ?', array($id));
+        $row = $db->row('SELECT 1 FROM thread WHERE id = ?', array($id));
+		var_dump($row);
         return new self($row);
     }
 	
@@ -79,4 +80,5 @@ class Thread extends AppModel
 		    array($this->id, $comment->username, $comment->body)
         );
     }
+	
 }
