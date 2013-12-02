@@ -9,7 +9,20 @@
 		On:<?php eh($v->created) ?></br>
     </div></br>
 </div>
+
+
 <?php endforeach ?>
+
 <div class="pager page-header">
     <?php echo $pagination_ctrl; ?>
 </div>
+<form class="well" method="post" action="<?php eh(url('comment/write')) ?>">
+    <label>Your name</label>
+    <input type="text" class="span2" name="username" value="<?php eh(Param::get('username')) ?>">
+    <label>Comment</label>
+    <textarea name="body"><?php eh(Param::get('body')) ?></textarea>
+    <br />
+    <input type="hidden" name="thread_id" value="<?php eh($v->thread_id) ?>">
+    <input type="hidden" name="page_next" value="write_end">
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
