@@ -1,5 +1,3 @@
-
-
 <p class="alert alert-success">
     You successfully wrote a comment.
 </p>

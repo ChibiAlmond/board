@@ -6,6 +6,26 @@ function eh($string)
     echo htmlspecialchars($string, ENT_QUOTES);
 }
 
+function input_check($string,$length)
+{
+    $length = $length;
+    $format = "/^[^0-9][A-z0-9]{{$length},}/";
+	if (!preg_match($format,$string)){
+	    return false;
+}
+	
+return true;
+}
+
+function session_check()
+{
+    if(!isset($_SESSION['username'])) {
+	header("Location: http://{$_SERVER['HTTP_HOST']}/user/login"); 
+	return false;
+	}
+    return true;
+}
+
 function readable_text($s)
 {
     $s = htmlspecialchars($s, ENT_QUOTES);

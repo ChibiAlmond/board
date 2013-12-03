@@ -37,10 +37,11 @@ class UserController extends AppController
     {
 		$invalid_pass = false;
 		$user_exists = false;
+		$invalid_user = false;
+		$invalid_pass = false;
         $user = new User;
 		$user->password2 = Param::get('password2');
         $page = Param::get('page_next', 'register');
-
 		switch ($page) {
         case 'register':
             break;
@@ -48,6 +49,14 @@ class UserController extends AppController
             $user->username = Param::get('username');
             $user->password = Param::get('password');
 		
+				if(!input_check($user->username,8)){
+				    $invalid_user = true;
+					$page='register';
+				}
+				if(!input_check($user->password,6)){
+				    $invalid_pass = true;
+					$page='register';
+				}
 				
 				if(!$user->isPasswordSame()) {
 					$invalid_pass = true;

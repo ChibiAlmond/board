@@ -1,30 +1,32 @@
 <?php if ($user_exists || $invalid_pass) :?>
     <div class="alert alert-block">
-        <h4 class="alert-heading">Validation Errors!</h4>
-            <div>
-			    <em>
+        <h4 class="warning">Errors!</h4>
+            <div class="alert-error">
+			   
 				    <?php
-					if ($user_exists && $invalid_pass) { 
-					    echo "Username Already Exist and Password Not Match";
-					}
-					else{
-					    if ($user_exists)
-					        echo "Username Already Exist";
-					    else
-			                echo "Password Did Not Match";
-					}
+					
+					    if ($user_exists) {
+					        echo "Username Already Exist</br>";
+						}
+					    if ($invalid_pass) {
+			                echo "Password Did Not Match</br>";
+						}
+						if ($invalid_user) {
+							echo "Invalid Username use only A-Z a-z 0-9 and must have at least 8 valid characters</br>";
+						}
+						if ($invalid_pass) {
+							echo "Invalid Password Format use only A-Z a-z 0-9 and must have at least 6 valid characters</br>";
+						}
 					?>
-				</em>  
+				
 			</div>
     </div>
 <?php endif ?>
 <h1>Register</h1>
 <form class="well" method="post" action="#">
     <label>Username </label>
-	<label>Maximum length: 16</label>
     <input type="text" class="span3" name="username" maxlength="16" value="<?php eh(Param::get('username')) ?>">
     <label>Password </label>
-	<label>Maximum length: 12</label>
     <input type="password" class="span3" name="password" maxlength="12" value="<?php eh(Param::get('password')) ?>">
     <label>Confirm Password</label>
     <input type="password" class="span3" name="password2" maxlength="12" value="<?php eh(Param::get('password2')) ?>">

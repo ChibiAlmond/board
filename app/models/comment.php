@@ -12,12 +12,13 @@ class Comment extends AppModel
 		    array($this->thread_id, $this->username, $this->body)
         );
 	}
-	
 	public static function getAll($page,$id)
     {
+		$thread = new Thread();
+		$thread = Thread::get($id);
         $comments = array();
         $db = DB::conn();
-                $max_comments = 5;
+        $max_comments = 5;
         $row_count = $db->value('SELECT COUNT(*) FROM comment WHERE thread_id = ?', array($id));
         $last_page = ceil($row_count/$max_comments);
         $offset = ($page - 1) * $max_comments;
@@ -34,7 +35,8 @@ class Comment extends AppModel
             'comments' => $comments,
             'last_page' => $last_page,
             'offset' => $offset,
-            'pagenum' => $page
+            'pagenum' => $page,
+			'thread' => $thread
         );
     }
         

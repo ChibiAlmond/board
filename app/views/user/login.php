@@ -1,6 +1,4 @@
-<?php
-?>
-<h2>Log In</h2>
+<h2 class="h2-header_top">Log In</h2>
 <form class="well" method="post" action="#">
     <label>Username</label>
     <input type="text" class="span3" name="username"  value="<?php eh(Param::get('username')) ?>">
