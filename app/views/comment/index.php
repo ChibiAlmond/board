@@ -4,7 +4,7 @@
     <a class="btn btn-primary" href="<?php eh(url('user/logout')) ?>">Logout</a>   
 <?php endif ?>
 <a class="btn btn-primary" href="<?php eh(url('thread/index')) ?>">Home</a>  
-<h1>All Comments about <?php echo "";?></h1>
+<h1>All Comments about <?php echo $thread['title'];?></h1>
 <ul>
 <?php foreach ($comments as $k => $v): ?>
 <div class="comment">
