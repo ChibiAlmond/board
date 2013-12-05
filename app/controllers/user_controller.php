@@ -35,7 +35,7 @@ class UserController extends AppController
 	
     public function register()
     {
-		$invalid_pass = false;
+		$invalid_passFormat = false;
 		$user_exists = false;
 		$invalid_user = false;
 		$invalid_pass = false;
@@ -54,7 +54,7 @@ class UserController extends AppController
 					$page='register';
 				}
 				if(!input_check($user->password,6)){
-				    $invalid_pass = true;
+				    $invalid_passFormat = true;
 					$page='register';
 				}
 				

@@ -6,10 +6,7 @@ class CommentController extends AppController {
 		            Param::get('page',1) ,
 					Param::get('thread_id')
 				);
-	    $thread = (array)$array['thread'];
-       // var_dump($thread);
-       // echo $thread["title"];
-
+		$thread_title = $array['thread']->title;
 		$comments = $array['comments'];
 		$last_page = $array['last_page'];
         $offset = $array['offset'];

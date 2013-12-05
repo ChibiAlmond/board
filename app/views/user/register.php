@@ -14,7 +14,7 @@
 						if ($invalid_user) {
 							echo "Invalid Username use only A-Z a-z 0-9 and must have at least 8 valid characters</br>";
 						}
-						if ($invalid_pass) {
+						if ($invalid_passFormat) {
 							echo "Invalid Password Format use only A-Z a-z 0-9 and must have at least 6 valid characters</br>";
 						}
 					?>
